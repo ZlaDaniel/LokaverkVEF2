@@ -1,4 +1,5 @@
 from bottle import route, run, template, static_file, error
+import os
 import json
 
 with open("vorur.json", "r", encoding="utf-8") as f:
@@ -43,4 +44,4 @@ def error404(error):
 @error(500)
 def error404(error):
     return "Þessi síða er ekki til"
-run()
+run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
